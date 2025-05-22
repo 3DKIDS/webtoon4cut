@@ -2,4 +2,3 @@ streamlit
 openai
 requests
 pillow
-python-dotenv
