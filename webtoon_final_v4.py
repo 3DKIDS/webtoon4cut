@@ -9,7 +9,9 @@ from io import BytesIO
 import time
 
 from openai import OpenAI
-client = OpenAI()
+
+# OpenAI 클라이언트 초기화 (초기에는 None)
+client = None
 
 # 앱 타이틀 및 설정
 st.set_page_config(
@@ -77,7 +79,7 @@ api_key = st.sidebar.text_input("OpenAI API 키", type="password", value="")
 if api_key:
     os.environ["OPENAI_API_KEY"] = api_key
     openai.api_key = api_key
-    client.api_key = api_key
+    client = openai.OpenAI(api_key=api_key)  # ★ 여기서만 인스턴스 생성 ★
 
 # 프레임 이미지 생성 함수
 def create_frame_images():
